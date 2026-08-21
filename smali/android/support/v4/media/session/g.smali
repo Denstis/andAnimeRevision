@@ -1,0 +1,30 @@
+###### Class android.support.v4.media.session.g (android.support.v4.media.session.g)
+.class Landroid/support/v4/media/session/g;
+.super Ljava/lang/Object;
+.source ""
+
+
+# direct methods
+.method public static a(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 1
+
+    check-cast p0, Landroid/media/session/MediaSession$QueueItem;
+
+    invoke-virtual {p0}, Landroid/media/session/MediaSession$QueueItem;->getDescription()Landroid/media/MediaDescription;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static b(Ljava/lang/Object;)J
+    .registers 3
+
+    check-cast p0, Landroid/media/session/MediaSession$QueueItem;
+
+    invoke-virtual {p0}, Landroid/media/session/MediaSession$QueueItem;->getQueueId()J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method

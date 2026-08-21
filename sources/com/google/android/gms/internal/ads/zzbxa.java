@@ -1,0 +1,23 @@
+package com.google.android.gms.internal.ads;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/* JADX INFO: loaded from: classes.dex */
+final /* synthetic */ class zzbxa implements zzdal {
+    static final zzdal zzdos = new zzbxa();
+
+    private zzbxa() {
+    }
+
+    @Override // com.google.android.gms.internal.ads.zzdal
+    public final Object apply(Object obj) {
+        ArrayList arrayList = new ArrayList();
+        for (zzbxc zzbxcVar : (List) obj) {
+            if (zzbxcVar != null) {
+                arrayList.add(zzbxcVar);
+            }
+        }
+        return arrayList;
+    }
+}

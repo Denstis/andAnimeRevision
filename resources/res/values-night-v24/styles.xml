@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ToolbarStyle" parent="">
+        <item name="android:contentInsetStart">14dp</item>
+        <item name="android:contentInsetLeft">14dp</item>
+        <item name="android:contentInsetStartWithNavigation">0dp</item>
+        <item name="contentInsetLeft">14dp</item>
+        <item name="contentInsetStart">14dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+    </style>
+</resources>

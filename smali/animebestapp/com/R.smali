@@ -1,0 +1,17 @@
+###### Class animebestapp.com.R is created by jadx
+###### Class animebestapp.com.R.anim is created by jadx
+###### Class animebestapp.com.R.animator is created by jadx
+###### Class animebestapp.com.R.attr is created by jadx
+###### Class animebestapp.com.R.bool is created by jadx
+###### Class animebestapp.com.R.color is created by jadx
+###### Class animebestapp.com.R.dimen is created by jadx
+###### Class animebestapp.com.R.drawable is created by jadx
+###### Class animebestapp.com.R.id is created by jadx
+###### Class animebestapp.com.R.integer is created by jadx
+###### Class animebestapp.com.R.interpolator is created by jadx
+###### Class animebestapp.com.R.layout is created by jadx
+###### Class animebestapp.com.R.menu is created by jadx
+###### Class animebestapp.com.R.mipmap is created by jadx
+###### Class animebestapp.com.R.string is created by jadx
+###### Class animebestapp.com.R.style is created by jadx
+###### Class animebestapp.com.R.xml is created by jadx

@@ -1,0 +1,194 @@
+package com.google.android.exoplayer2.upstream;
+
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.util.Predicate;
+import java.io.IOException;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/* JADX INFO: loaded from: classes.dex */
+public interface HttpDataSource extends DataSource {
+    public static final Predicate<String> REJECT_PAYWALL_TYPES = new Predicate() { // from class: com.google.android.exoplayer2.upstream.c
+        @Override // com.google.android.exoplayer2.util.Predicate
+        public final boolean evaluate(Object obj) {
+            return e.a((String) obj);
+        }
+    };
+
+    public static abstract class BaseFactory implements Factory {
+        private final RequestProperties defaultRequestProperties = new RequestProperties();
+
+        @Override // com.google.android.exoplayer2.upstream.HttpDataSource.Factory
+        @Deprecated
+        public final void clearAllDefaultRequestProperties() {
+            this.defaultRequestProperties.clear();
+        }
+
+        @Override // com.google.android.exoplayer2.upstream.HttpDataSource.Factory
+        @Deprecated
+        public final void clearDefaultRequestProperty(String str) {
+            this.defaultRequestProperties.remove(str);
+        }
+
+        @Override // com.google.android.exoplayer2.upstream.HttpDataSource.Factory, com.google.android.exoplayer2.upstream.DataSource.Factory
+        public final HttpDataSource createDataSource() {
+            return createDataSourceInternal(this.defaultRequestProperties);
+        }
+
+        protected abstract HttpDataSource createDataSourceInternal(RequestProperties requestProperties);
+
+        @Override // com.google.android.exoplayer2.upstream.HttpDataSource.Factory
+        public final RequestProperties getDefaultRequestProperties() {
+            return this.defaultRequestProperties;
+        }
+
+        @Override // com.google.android.exoplayer2.upstream.HttpDataSource.Factory
+        @Deprecated
+        public final void setDefaultRequestProperty(String str, String str2) {
+            this.defaultRequestProperties.set(str, str2);
+        }
+    }
+
+    public interface Factory extends DataSource.Factory {
+        @Deprecated
+        void clearAllDefaultRequestProperties();
+
+        @Deprecated
+        void clearDefaultRequestProperty(String str);
+
+        @Override // com.google.android.exoplayer2.upstream.DataSource.Factory
+        /* bridge */ /* synthetic */ DataSource createDataSource();
+
+        @Override // com.google.android.exoplayer2.upstream.DataSource.Factory
+        HttpDataSource createDataSource();
+
+        RequestProperties getDefaultRequestProperties();
+
+        @Deprecated
+        void setDefaultRequestProperty(String str, String str2);
+    }
+
+    public static class HttpDataSourceException extends IOException {
+        public static final int TYPE_CLOSE = 3;
+        public static final int TYPE_OPEN = 1;
+        public static final int TYPE_READ = 2;
+        public final DataSpec dataSpec;
+        public final int type;
+
+        @Documented
+        @Retention(RetentionPolicy.SOURCE)
+        public @interface Type {
+        }
+
+        public HttpDataSourceException(DataSpec dataSpec, int i2) {
+            this.dataSpec = dataSpec;
+            this.type = i2;
+        }
+
+        public HttpDataSourceException(IOException iOException, DataSpec dataSpec, int i2) {
+            super(iOException);
+            this.dataSpec = dataSpec;
+            this.type = i2;
+        }
+
+        public HttpDataSourceException(String str, DataSpec dataSpec, int i2) {
+            super(str);
+            this.dataSpec = dataSpec;
+            this.type = i2;
+        }
+
+        public HttpDataSourceException(String str, IOException iOException, DataSpec dataSpec, int i2) {
+            super(str, iOException);
+            this.dataSpec = dataSpec;
+            this.type = i2;
+        }
+    }
+
+    public static final class InvalidContentTypeException extends HttpDataSourceException {
+        public final String contentType;
+
+        public InvalidContentTypeException(String str, DataSpec dataSpec) {
+            super("Invalid content type: " + str, dataSpec, 1);
+            this.contentType = str;
+        }
+    }
+
+    public static final class InvalidResponseCodeException extends HttpDataSourceException {
+        public final Map<String, List<String>> headerFields;
+        public final int responseCode;
+        public final String responseMessage;
+
+        public InvalidResponseCodeException(int i2, String str, Map<String, List<String>> map, DataSpec dataSpec) {
+            super("Response code: " + i2, dataSpec, 1);
+            this.responseCode = i2;
+            this.responseMessage = str;
+            this.headerFields = map;
+        }
+
+        @Deprecated
+        public InvalidResponseCodeException(int i2, Map<String, List<String>> map, DataSpec dataSpec) {
+            this(i2, null, map, dataSpec);
+        }
+    }
+
+    public static final class RequestProperties {
+        private final Map<String, String> requestProperties = new HashMap();
+        private Map<String, String> requestPropertiesSnapshot;
+
+        public synchronized void clear() {
+            this.requestPropertiesSnapshot = null;
+            this.requestProperties.clear();
+        }
+
+        public synchronized void clearAndSet(Map<String, String> map) {
+            this.requestPropertiesSnapshot = null;
+            this.requestProperties.clear();
+            this.requestProperties.putAll(map);
+        }
+
+        public synchronized Map<String, String> getSnapshot() {
+            if (this.requestPropertiesSnapshot == null) {
+                this.requestPropertiesSnapshot = Collections.unmodifiableMap(new HashMap(this.requestProperties));
+            }
+            return this.requestPropertiesSnapshot;
+        }
+
+        public synchronized void remove(String str) {
+            this.requestPropertiesSnapshot = null;
+            this.requestProperties.remove(str);
+        }
+
+        public synchronized void set(String str, String str2) {
+            this.requestPropertiesSnapshot = null;
+            this.requestProperties.put(str, str2);
+        }
+
+        public synchronized void set(Map<String, String> map) {
+            this.requestPropertiesSnapshot = null;
+            this.requestProperties.putAll(map);
+        }
+    }
+
+    void clearAllRequestProperties();
+
+    void clearRequestProperty(String str);
+
+    @Override // com.google.android.exoplayer2.upstream.DataSource
+    void close();
+
+    @Override // com.google.android.exoplayer2.upstream.DataSource
+    Map<String, List<String>> getResponseHeaders();
+
+    @Override // com.google.android.exoplayer2.upstream.DataSource
+    long open(DataSpec dataSpec);
+
+    @Override // com.google.android.exoplayer2.upstream.DataSource
+    int read(byte[] bArr, int i2, int i3);
+
+    void setRequestProperty(String str, String str2);
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#1c2127</color>
+    <color name="backgroundItem">#292d36</color>
+    <color name="backgroundItemShift">#f1f3f3</color>
+    <color name="backgroundNavigation">#172536</color>
+    <color name="backgroundShift">#ddddde</color>
+    <color name="backgroundShiftNavigation">#f1f3f3</color>
+    <color name="bgInfoItemListAnime">#252b35</color>
+    <color name="bgInfoItemListAnimeShift">#f1f3f3</color>
+    <color name="bgInfoItemTop">#252a33</color>
+    <color name="bg_card_info">#242830</color>
+    <color name="bg_rasp">#031a24</color>
+    <color name="bg_series_select">#1c313a</color>
+    <color name="bg_splash">#1c2127</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="colorPrimary">@color/toolbarBG</color>
+    <color name="menu_background_sub_item">#031828</color>
+    <color name="navItemShiftText">#4d4d4d</color>
+    <color name="navItemText">#f3f3f3</color>
+    <color name="shadow">#cc172536</color>
+    <color name="statusBar">#111d2b</color>
+    <color name="statusBarShift">#0073aa</color>
+    <color name="test">#1b1e25</color>
+    <color name="textItem">#7b8494</color>
+    <color name="textItemShift">#616263</color>
+    <color name="textSelectSeries">#0093c4</color>
+    <color name="textSeries">#ffffff</color>
+    <color name="text_description_anime">#7b8494</color>
+    <color name="tint_all_rasp">#0073aa</color>
+    <color name="toolbarBG">#172536</color>
+    <color name="toolbarShiftBG">#008acb</color>
+</resources>

@@ -1,0 +1,28 @@
+package c.b.a.c.f;
+
+import android.os.Bundle;
+import c.b.a.c.c;
+import c.b.a.c.e;
+
+/* JADX INFO: loaded from: classes.dex */
+public interface a<V extends c.b.a.c.e, P extends c.b.a.c.c<V>> {
+    void a(Bundle bundle);
+
+    void onContentChanged();
+
+    void onCreate(Bundle bundle);
+
+    void onDestroy();
+
+    void onPause();
+
+    void onRestart();
+
+    void onResume();
+
+    void onSaveInstanceState(Bundle bundle);
+
+    void onStart();
+
+    void onStop();
+}

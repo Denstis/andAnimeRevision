@@ -1,0 +1,12 @@
+###### Class com.google.android.gms.ads.mediation.customevent.CustomEventBannerListener (com.google.android.gms.ads.mediation.customevent.CustomEventBannerListener)
+.class public interface abstract Lcom/google/android/gms/ads/mediation/customevent/CustomEventBannerListener;
+.super Ljava/lang/Object;
+.source ""
+
+# interfaces
+.implements Lcom/google/android/gms/ads/mediation/customevent/CustomEventListener;
+
+
+# virtual methods
+.method public abstract onAdLoaded(Landroid/view/View;)V
+.end method

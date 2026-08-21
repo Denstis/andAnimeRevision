@@ -1,0 +1,14 @@
+###### Class com.google.android.exoplayer2.source.BehindLiveWindowException (com.google.android.exoplayer2.source.BehindLiveWindowException)
+.class public final Lcom/google/android/exoplayer2/source/BehindLiveWindowException;
+.super Ljava/io/IOException;
+.source ""
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/io/IOException;-><init>()V
+
+    return-void
+.end method

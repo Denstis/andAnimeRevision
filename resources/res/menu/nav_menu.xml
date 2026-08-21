@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navLib"
+        android:title="Библиотека">
+        <menu>
+            <item
+                android:icon="@drawable/ic_mark"
+                android:id="@+id/navGenre"
+                android:title="@string/from_genre"/>
+            <item
+                android:icon="@drawable/ic_calendar"
+                android:id="@+id/navYear"
+                android:title="@string/from_year"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/navLib2"
+        android:title="Библиотека2"
+        app:showAsAction="collapseActionView">
+        <menu>
+            <item
+                android:icon="@drawable/ic_mark"
+                android:title="@string/from_genre"/>
+            <item
+                android:icon="@drawable/ic_calendar"
+                android:title="@string/from_year"/>
+        </menu>
+    </item>
+    <item android:title="Пользователям">
+        <menu>
+            <item
+                android:icon="@drawable/ic_night"
+                android:id="@+id/navNight"
+                android:title="Ночной режим"
+                app:actionLayout="@layout/nav_toggle"/>
+            <item
+                android:icon="@drawable/ic_player"
+                android:id="@+id/navPlayer"
+                android:title="Плеер веб/внутренний"
+                app:actionLayout="@layout/nav_toggle"/>
+            <item
+                android:icon="@drawable/ic_settings"
+                android:id="@+id/nav_settings"
+                android:title="@string/settings"/>
+            <item
+                android:icon="@android:drawable/ic_dialog_info"
+                android:id="@+id/nav_update"
+                android:title="Проверить обновление"/>
+        </menu>
+    </item>
+    <item android:title="Связь с проектом">
+        <menu>
+            <item
+                android:icon="@mipmap/ic_vk"
+                android:id="@+id/nav_vk"
+                android:title="Группа VK"/>
+            <item
+                android:icon="@mipmap/ic_telegram"
+                android:id="@+id/nav_telegram"
+                android:title="Телеграмм"/>
+            <item
+                android:icon="@android:drawable/ic_dialog_info"
+                android:id="@+id/nav_site"
+                android:title="Сайт"/>
+        </menu>
+    </item>
+</menu>

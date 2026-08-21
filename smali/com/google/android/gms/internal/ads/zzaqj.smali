@@ -1,0 +1,87 @@
+###### Class com.google.android.gms.internal.ads.zzaqj (com.google.android.gms.internal.ads.zzaqj)
+.class public final Lcom/google/android/gms/internal/ads/zzaqj;
+.super Ljava/lang/Object;
+.source ""
+
+# interfaces
+.implements Lcom/google/android/gms/ads/reward/RewardItem;
+
+
+# instance fields
+.field private final zzdnw:Lcom/google/android/gms/internal/ads/zzapy;
+
+
+# direct methods
+.method public constructor <init>(Lcom/google/android/gms/internal/ads/zzapy;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/google/android/gms/internal/ads/zzaqj;->zzdnw:Lcom/google/android/gms/internal/ads/zzapy;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final getAmount()I
+    .registers 4
+
+    iget-object v0, p0, Lcom/google/android/gms/internal/ads/zzaqj;->zzdnw:Lcom/google/android/gms/internal/ads/zzapy;
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_6
+
+    return v1
+
+    :cond_6
+    :try_start_6
+    invoke-interface {v0}, Lcom/google/android/gms/internal/ads/zzapy;->getAmount()I
+
+    move-result v0
+    :try_end_a
+    .catch Landroid/os/RemoteException; {:try_start_6 .. :try_end_a} :catch_b
+
+    return v0
+
+    :catch_b
+    move-exception v0
+
+    const-string v2, "Could not forward getAmount to RewardItem"
+
+    invoke-static {v2, v0}, Lcom/google/android/gms/internal/ads/zzaxi;->zzd(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    return v1
+.end method
+
+.method public final getType()Ljava/lang/String;
+    .registers 4
+
+    iget-object v0, p0, Lcom/google/android/gms/internal/ads/zzaqj;->zzdnw:Lcom/google/android/gms/internal/ads/zzapy;
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_6
+
+    return-object v1
+
+    :cond_6
+    :try_start_6
+    invoke-interface {v0}, Lcom/google/android/gms/internal/ads/zzapy;->getType()Ljava/lang/String;
+
+    move-result-object v0
+    :try_end_a
+    .catch Landroid/os/RemoteException; {:try_start_6 .. :try_end_a} :catch_b
+
+    return-object v0
+
+    :catch_b
+    move-exception v0
+
+    const-string v2, "Could not forward getType to RewardItem"
+
+    invoke-static {v2, v0}, Lcom/google/android/gms/internal/ads/zzaxi;->zzd(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    return-object v1
+.end method

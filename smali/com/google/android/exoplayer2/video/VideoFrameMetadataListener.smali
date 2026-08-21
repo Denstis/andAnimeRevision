@@ -1,0 +1,9 @@
+###### Class com.google.android.exoplayer2.video.VideoFrameMetadataListener (com.google.android.exoplayer2.video.VideoFrameMetadataListener)
+.class public interface abstract Lcom/google/android/exoplayer2/video/VideoFrameMetadataListener;
+.super Ljava/lang/Object;
+.source ""
+
+
+# virtual methods
+.method public abstract onVideoFrameAboutToBeRendered(JJLcom/google/android/exoplayer2/Format;)V
+.end method

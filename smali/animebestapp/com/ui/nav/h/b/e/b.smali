@@ -1,0 +1,36 @@
+###### Class animebestapp.com.ui.nav.h.b.e.b (animebestapp.com.ui.nav.h.b.e.b)
+.class public final Lanimebestapp/com/ui/nav/h/b/e/b;
+.super Lanimebestapp/com/ui/a/c;
+.source ""
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lanimebestapp/com/ui/a/c<",
+        "Lanimebestapp/com/ui/nav/h/b/e/c;",
+        ">;"
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Lanimebestapp/com/ui/a/c;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(Lanimebestapp/com/c/a/a;)V
+    .registers 3
+
+    const-string v0, "component"
+
+    invoke-static {p1, v0}, Lg/p/b/f;->b(Ljava/lang/Object;Ljava/lang/String;)V
+
+    return-void
+.end method

@@ -1,0 +1,16 @@
+###### Class com.google.android.gms.common.api.Releasable (com.google.android.gms.common.api.Releasable)
+.class public interface abstract Lcom/google/android/gms/common/api/Releasable;
+.super Ljava/lang/Object;
+.source ""
+
+
+# annotations
+.annotation build Lcom/google/android/gms/common/annotation/KeepForSdk;
+.end annotation
+
+
+# virtual methods
+.method public abstract release()V
+    .annotation build Lcom/google/android/gms/common/annotation/KeepForSdk;
+    .end annotation
+.end method

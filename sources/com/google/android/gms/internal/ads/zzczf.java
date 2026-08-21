@@ -1,0 +1,23 @@
+package com.google.android.gms.internal.ads;
+
+import android.content.Context;
+import android.os.Looper;
+import com.google.android.gms.common.internal.ShowFirstParty;
+import com.google.android.gms.internal.ads.zzczh;
+import com.google.android.gms.internal.ads.zzczl;
+
+/* JADX INFO: loaded from: classes.dex */
+@ShowFirstParty
+public final class zzczf {
+    private final Looper zzgnn;
+    private final Context zzlk;
+
+    public zzczf(Context context, Looper looper) {
+        this.zzlk = context;
+        this.zzgnn = looper;
+    }
+
+    public final void zzgl(String str) {
+        new zzcze(this.zzlk, this.zzgnn, (zzczl) zzczl.zzanz().zzgo(this.zzlk.getPackageName()).zzb(zzczl.zzb.BLOCKED_IMPRESSION).zzb(zzczh.zzanx().zzgn(str).zzb(zzczh.zza.BLOCKED_REASON_BACKGROUND)).zzazr()).zzanw();
+    }
+}

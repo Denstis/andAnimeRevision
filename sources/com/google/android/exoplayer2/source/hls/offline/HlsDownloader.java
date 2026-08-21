@@ -1,0 +1,92 @@
+package com.google.android.exoplayer2.source.hls.offline;
+
+import android.net.Uri;
+import com.google.android.exoplayer2.offline.DownloaderConstructorHelper;
+import com.google.android.exoplayer2.offline.SegmentDownloader;
+import com.google.android.exoplayer2.offline.StreamKey;
+import com.google.android.exoplayer2.source.hls.playlist.HlsMasterPlaylist;
+import com.google.android.exoplayer2.source.hls.playlist.HlsMediaPlaylist;
+import com.google.android.exoplayer2.source.hls.playlist.HlsPlaylist;
+import com.google.android.exoplayer2.source.hls.playlist.HlsPlaylistParser;
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.upstream.DataSpec;
+import com.google.android.exoplayer2.upstream.ParsingLoadable;
+import com.google.android.exoplayer2.util.UriUtil;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class HlsDownloader extends SegmentDownloader<HlsPlaylist> {
+    public HlsDownloader(Uri uri, List<StreamKey> list, DownloaderConstructorHelper downloaderConstructorHelper) {
+        super(uri, list, downloaderConstructorHelper);
+    }
+
+    private static void addResolvedUris(String str, List<HlsMasterPlaylist.HlsUrl> list, List<Uri> list2) {
+        for (int i2 = 0; i2 < list.size(); i2++) {
+            list2.add(UriUtil.resolveToUri(str, list.get(i2).url));
+        }
+    }
+
+    private static void addSegment(ArrayList<SegmentDownloader.Segment> arrayList, HlsMediaPlaylist hlsMediaPlaylist, HlsMediaPlaylist.Segment segment, HashSet<Uri> hashSet) {
+        long j2 = hlsMediaPlaylist.startTimeUs + segment.relativeStartTimeUs;
+        String str = segment.fullSegmentEncryptionKeyUri;
+        if (str != null) {
+            Uri uriResolveToUri = UriUtil.resolveToUri(hlsMediaPlaylist.baseUri, str);
+            if (hashSet.add(uriResolveToUri)) {
+                arrayList.add(new SegmentDownloader.Segment(j2, new DataSpec(uriResolveToUri)));
+            }
+        }
+        arrayList.add(new SegmentDownloader.Segment(j2, new DataSpec(UriUtil.resolveToUri(hlsMediaPlaylist.baseUri, segment.url), segment.byterangeOffset, segment.byterangeLength, null)));
+    }
+
+    private static HlsPlaylist loadManifest(DataSource dataSource, Uri uri) {
+        return (HlsPlaylist) ParsingLoadable.load(dataSource, new HlsPlaylistParser(), uri, 4);
+    }
+
+    /* JADX INFO: Access modifiers changed from: protected */
+    @Override // com.google.android.exoplayer2.offline.SegmentDownloader
+    public HlsPlaylist getManifest(DataSource dataSource, Uri uri) {
+        return loadManifest(dataSource, uri);
+    }
+
+    /* JADX INFO: Access modifiers changed from: protected */
+    @Override // com.google.android.exoplayer2.offline.SegmentDownloader
+    public List<SegmentDownloader.Segment> getSegments(DataSource dataSource, HlsPlaylist hlsPlaylist, boolean z) throws IOException {
+        ArrayList<Uri> arrayList = new ArrayList();
+        if (hlsPlaylist instanceof HlsMasterPlaylist) {
+            HlsMasterPlaylist hlsMasterPlaylist = (HlsMasterPlaylist) hlsPlaylist;
+            addResolvedUris(hlsMasterPlaylist.baseUri, hlsMasterPlaylist.variants, arrayList);
+            addResolvedUris(hlsMasterPlaylist.baseUri, hlsMasterPlaylist.audios, arrayList);
+            addResolvedUris(hlsMasterPlaylist.baseUri, hlsMasterPlaylist.subtitles, arrayList);
+        } else {
+            arrayList.add(Uri.parse(hlsPlaylist.baseUri));
+        }
+        ArrayList arrayList2 = new ArrayList();
+        HashSet hashSet = new HashSet();
+        for (Uri uri : arrayList) {
+            try {
+                HlsMediaPlaylist hlsMediaPlaylist = (HlsMediaPlaylist) loadManifest(dataSource, uri);
+                arrayList2.add(new SegmentDownloader.Segment(hlsMediaPlaylist.startTimeUs, new DataSpec(uri)));
+                HlsMediaPlaylist.Segment segment = null;
+                List<HlsMediaPlaylist.Segment> list = hlsMediaPlaylist.segments;
+                for (int i2 = 0; i2 < list.size(); i2++) {
+                    HlsMediaPlaylist.Segment segment2 = list.get(i2);
+                    HlsMediaPlaylist.Segment segment3 = segment2.initializationSegment;
+                    if (segment3 != null && segment3 != segment) {
+                        addSegment(arrayList2, hlsMediaPlaylist, segment3, hashSet);
+                        segment = segment3;
+                    }
+                    addSegment(arrayList2, hlsMediaPlaylist, segment2, hashSet);
+                }
+            } catch (IOException e2) {
+                if (!z) {
+                    throw e2;
+                }
+                arrayList2.add(new SegmentDownloader.Segment(0L, new DataSpec(uri)));
+            }
+        }
+        return arrayList2;
+    }
+}

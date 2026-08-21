@@ -1,0 +1,18 @@
+package com.google.android.gms.ads;
+
+import com.google.android.gms.common.annotation.KeepForSdk;
+
+/* JADX INFO: loaded from: classes.dex */
+@KeepForSdk
+@Deprecated
+public final class Correlator {
+    @KeepForSdk
+    @Deprecated
+    public Correlator() {
+    }
+
+    @KeepForSdk
+    @Deprecated
+    public final void reset() {
+    }
+}

@@ -1,0 +1,52 @@
+package com.google.android.gms.internal.ads;
+
+import android.util.JsonWriter;
+import com.google.android.gms.common.util.Clock;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.Iterator;
+import java.util.List;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class zzcbv {
+    private final Clock zzbmp;
+
+    public zzcbv(Clock clock) {
+        this.zzbmp = clock;
+    }
+
+    public final void zza(List<Object> list, String str, String str2, Object... objArr) {
+        if (((Boolean) zzuv.zzon().zzd(zzza.zzclv)).booleanValue()) {
+            long jCurrentTimeMillis = this.zzbmp.currentTimeMillis();
+            StringWriter stringWriter = new StringWriter();
+            JsonWriter jsonWriter = new JsonWriter(stringWriter);
+            try {
+                jsonWriter.beginObject();
+                jsonWriter.name("timestamp").value(jCurrentTimeMillis);
+                jsonWriter.name(FirebaseAnalytics.Param.SOURCE).value(str);
+                jsonWriter.name("event").value(str2);
+                jsonWriter.name("components").beginArray();
+                Iterator<Object> it = list.iterator();
+                while (it.hasNext()) {
+                    jsonWriter.value(it.next().toString());
+                }
+                jsonWriter.endArray();
+                jsonWriter.name("params").beginArray();
+                int length = objArr.length;
+                for (int i2 = 0; i2 < length; i2++) {
+                    Object obj = objArr[i2];
+                    jsonWriter.value(obj != null ? obj.toString() : null);
+                }
+                jsonWriter.endArray();
+                jsonWriter.endObject();
+                jsonWriter.flush();
+                jsonWriter.close();
+            } catch (IOException e2) {
+                zzaxi.zzc("unable to log", e2);
+            }
+            String strValueOf = String.valueOf(stringWriter.toString());
+            zzaxi.zzet(strValueOf.length() != 0 ? "AD-DBG ".concat(strValueOf) : new String("AD-DBG "));
+        }
+    }
+}

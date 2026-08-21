@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:textColor="@color/tint_icon_bottom_menu"
+        android:id="@+id/btnDescription"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Описание"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@+id/btnAnime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <View
+        android:id="@+id/dividerDesc"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnDescription"
+        app:layout_constraintStart_toStartOf="@+id/btnDescription"
+        app:layout_constraintTop_toBottomOf="@+id/btnDescription"/>
+    <Button
+        android:textColor="@color/tint_icon_bottom_menu"
+        android:id="@+id/btnAnime"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Порядок просмотра"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDescription"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <View
+        android:id="@+id/dividerAnime"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnAnime"
+        app:layout_constraintStart_toStartOf="@+id/btnAnime"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnime"/>
+    <ViewSwitcher
+        android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnime">
+        <include layout="@layout/view_description"/>
+        <include layout="@layout/view_bottom"/>
+    </ViewSwitcher>
+</androidx.constraintlayout.widget.ConstraintLayout>

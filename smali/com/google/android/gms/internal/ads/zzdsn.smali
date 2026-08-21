@@ -1,0 +1,35 @@
+###### Class com.google.android.gms.internal.ads.zzdsn (com.google.android.gms.internal.ads.zzdsn)
+.class final Lcom/google/android/gms/internal/ads/zzdsn;
+.super Ljava/lang/Object;
+.source ""
+
+# interfaces
+.implements Lcom/google/android/gms/internal/ads/zzdso;
+
+
+# direct methods
+.method constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final newInstance(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 4
+
+    check-cast p1, Lcom/google/android/gms/internal/ads/zzdqw;
+
+    sget v0, Lcom/google/android/gms/internal/ads/zzdqw$zzd;->zzhky:I
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p1, v0, v1, v1}, Lcom/google/android/gms/internal/ads/zzdqw;->zza(ILjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method

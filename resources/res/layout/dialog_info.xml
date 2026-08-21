@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/bgInfoItemListAnime"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="18sp"
+        android:textColor="@color/text_description_anime"
+        android:gravity="center"
+        android:id="@+id/tvTitle"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Обновление приложения"
+        android:textAllCaps="true"/>
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="match_parent"
+        android:layout_height="328dp"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:textSize="14dp"
+        android:textColor="@color/text_description_anime"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/tvMessage"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Версия плюс больше не актуальна, всю инфу выложим позже, актуальная версия будет 1.5.4, без потери данных (обновится текущее приложение)"
+        android:fontFamily="sans-serif-medium"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <Button
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:textColor="@color/textSelectSeries"
+            android:id="@+id/btnLeft"
+            android:background="@color/default_select"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"/>
+        <Button
+            android:textColor="@color/textSelectSeries"
+            android:id="@+id/btnRight"
+            android:background="@color/default_select"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvMessage"/>
+    </LinearLayout>
+</LinearLayout>

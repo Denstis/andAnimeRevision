@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_comment"
+        android:id="@+id/m_comment"
+        android:title="Comments"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:icon="@drawable/ic_star"
+        android:id="@+id/m_favorite"
+        android:checked="true"
+        android:title="@string/search_title"
+        android:checkable="true"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/nav_viewed"
+                android:title="@string/viewed"/>
+            <item
+                android:id="@+id/nav_abandoned"
+                android:title="@string/abandoned"/>
+            <item
+                android:id="@+id/nav_snoozed"
+                android:title="@string/snoozed"/>
+            <item
+                android:id="@+id/nav_scheduled"
+                android:title="@string/scheduled"/>
+            <item
+                android:id="@+id/nav_reviewing"
+                android:title="@string/reviewing"/>
+            <item
+                android:id="@+id/nav_look"
+                android:title="@string/look"/>
+            <item
+                android:id="@+id/nav_delete"
+                android:title="Удалить закладку"/>
+        </menu>
+    </item>
+</menu>

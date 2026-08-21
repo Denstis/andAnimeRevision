@@ -1,0 +1,20 @@
+package com.google.android.gms.internal.ads;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+/* JADX INFO: loaded from: classes.dex */
+final class zzlc implements Parcelable.Creator<zzkz> {
+    zzlc() {
+    }
+
+    @Override // android.os.Parcelable.Creator
+    public final /* synthetic */ zzkz createFromParcel(Parcel parcel) {
+        return new zzkz(parcel);
+    }
+
+    @Override // android.os.Parcelable.Creator
+    public final /* synthetic */ zzkz[] newArray(int i2) {
+        return new zzkz[i2];
+    }
+}
